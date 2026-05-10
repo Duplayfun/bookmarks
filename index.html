@@ -3,359 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>我的收藏夹 | 网站导航</title>
-    <!-- Font Awesome 6 (免费图标库) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>简洁收藏夹</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            line-height: 1.5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            padding: 20px;
         }
-
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
         }
-
-        /* 头部 */
-        .site-header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* 头部（仅保留标题和搜索） */
+        .header {
+            margin-bottom: 32px;
         }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .logo a {
-            font-size: 1.6rem;
-            font-weight: 700;
-            text-decoration: none;
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            display: inline-block;
         }
-
         .search-box {
-            flex: 1;
-            max-width: 400px;
+            margin-bottom: 24px;
         }
-
         .search-box input {
             width: 100%;
+            max-width: 400px;
             padding: 10px 16px;
             border: 1px solid #e2e8f0;
             border-radius: 40px;
             font-size: 0.9rem;
             outline: none;
-            transition: all 0.2s;
+            transition: 0.2s;
+            background: white;
         }
-
         .search-box input:focus {
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #475569;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #3b82f6;
-        }
-
-        /* 分类标签 (可选，如果不需要可以隐藏) */
+        /* 分类标签 */
         .categories {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin: 32px 0 24px;
+            gap: 10px;
+            margin-bottom: 28px;
         }
-
         .category-btn {
-            padding: 8px 20px;
+            background: #eef2f6;
             border: none;
-            background: #f1f5f9;
-            border-radius: 40px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s;
+            transition: 0.2s;
+            font-weight: 500;
         }
-
         .category-btn.active {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
         }
-
-        /* 卡片网格 */
+        /* 网站网格：极简卡片，只显示名称 */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 48px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
         }
-
-        /* 卡片样式 */
-        .link-card {
+        .site-card {
             background: white;
-            border-radius: 20px;
-            padding: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 14px 12px;
+            text-align: center;
+            transition: 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            border: 1px solid #eceff5;
         }
-
-        .link-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+        .site-card a {
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1f2937;
+            display: block;
+            word-break: keep-all;
         }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+        .site-card:hover {
+            transform: translateY(-3px);
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .site-card a:hover {
             color: #3b82f6;
         }
-
-        .link-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .link-title a {
-            text-decoration: none;
-            color: #1e293b;
-            transition: color 0.2s;
-        }
-
-        .link-title a:hover {
-            color: #3b82f6;
-        }
-
-        .link-desc {
-            color: #475569;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
-
-        .link-footer {
-            margin-top: 8px;
-        }
-
-        .visit-btn {
-            display: inline-block;
-            background: #f1f5f9;
-            padding: 6px 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            color: #475569;
-            transition: all 0.2s;
-        }
-
-        .visit-btn:hover {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .stats {
-            text-align: center;
-            padding: 24px;
-            background: white;
-            border-radius: 20px;
-            margin: 24px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 32px 0;
-            color: #94a3b8;
-            font-size: 0.8rem;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .search-box {
-                max-width: 100%;
-            }
+        @media (max-width: 600px) {
             .links-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 12px;
+            }
+            .site-card {
+                padding: 10px 8px;
+            }
+            .site-card a {
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <div class="logo">
-                <a href="/">📚 我的收藏夹</a>
-            </div>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索网站名称或描述...">
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active">首页</a>
-                <a href="#">关于</a>
-            </div>
+<div class="container">
+    <div class="header">
+        <h1>📌 简洁收藏夹</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索网站名称...">
         </div>
-    </header>
+    </div>
 
-    <main class="container">
-        <!-- 分类过滤器（可选） -->
-        <div class="categories" id="categories">
-            <button class="category-btn active" data-category="all">全部</button>
-            <!-- 分类会由 JavaScript 动态生成，方便维护 -->
-        </div>
-        <div class="links-grid" id="linksGrid"></div>
-        <div class="stats">
-            📌 共收录 <span id="totalCount">0</span> 个网站 · 持续更新中
-        </div>
-    </main>
+    <div class="categories" id="categoryBar">
+        <!-- 分类按钮会由 JS 动态生成 -->
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>© 2026 我的收藏夹 | 个人导航站</p>
-        </div>
-    </footer>
+    <div id="sitesGrid" class="links-grid"></div>
+</div>
 
-    <script>
-        // ========================
-        // 网站数据（按分类添加）
-        // 每个对象属性：
-        //   name: 网站名称
-        //   category: 分类标识（如 "常用", "AI", "开发", "设计", "学习", "其他"）
-        //   desc: 简短描述
-        //   url: 网址
-        //   icon: Font Awesome 图标类（可选，默认为 fa-link）
-        // ========================
-        const linksData = [
-            // ---------- 常用（置顶） ----------
-            { name: "GitHub", category: "常用", desc: "全球最大的代码托管平台，寻找开源项目。", url: "https://github.com", icon: "fab fa-github" },
-            { name: "Google", category: "常用", desc: "全球搜索引擎，获取资讯和知识。", url: "https://www.google.com", icon: "fab fa-google" },
-            { name: "YouTube", category: "常用", desc: "视频学习平台，海量教程。", url: "https://www.youtube.com", icon: "fab fa-youtube" },
-            { name: "Netlify", category: "常用", desc: "免费静态网站托管，一键部署。", url: "https://www.netlify.com", icon: "fas fa-cloud-upload-alt" },
-            { name: "DeepSeek", category: "常用", desc: "AI助手，编程、写作、翻译。", url: "https://chat.deepseek.com", icon: "fas fa-robot" },
+<script>
+    // ---------- 网站数据 ----------
+    // 常用网站（置顶，按顺序）
+    const pinnedSites = [
+        { name: "DeepSeek", url: "https://chat.deepseek.com" },
+        { name: "锤子便签", url: "https://yun.smartisan.com/#/notes" },
+        { name: "豆包", url: "https://www.doubao.com/chat/" },
+        { name: "Google", url: "https://www.google.com" },
+        { name: "企业邮箱", url: "https://v6.35.com/v2/login/index" },
+        { name: "1688", url: "https://www.1688.com/" },
+        { name: "WeTransfer", url: "https://wetransfer.com/" },
+        { name: "顺丰快递", url: "https://www.sf-express.com/chn/sc" }
+    ];
 
-            // ---------- AI工具 ----------
-            { name: "ChatGPT", category: "AI", desc: "OpenAI 对话模型，全能助手。", url: "https://chat.openai.com", icon: "fas fa-comment-dots" },
-            { name: "Claude", category: "AI", desc: "Anthropic 打造，长文本处理能力强。", url: "https://claude.ai", icon: "fas fa-brain" },
-            { name: "Midjourney", category: "AI", desc: "AI绘画工具，艺术感极强。", url: "https://www.midjourney.com", icon: "fas fa-palette" },
-            { name: "Hugging Face", category: "AI", desc: "AI模型社区，免费模型和数据集。", url: "https://huggingface.co", icon: "fas fa-hug" },
+    // 其余网站（按需增删，这里沿用之前的部分站点）
+    const otherSites = [
+        { name: "GitHub", url: "https://github.com" },
+        { name: "YouTube", url: "https://www.youtube.com" },
+        { name: "Netlify", url: "https://www.netlify.com" },
+        { name: "ChatGPT", url: "https://chat.openai.com" },
+        { name: "Claude", url: "https://claude.ai" },
+        { name: "Midjourney", url: "https://www.midjourney.com" },
+        { name: "Hugging Face", url: "https://huggingface.co" },
+        { name: "Stack Overflow", url: "https://stackoverflow.com" },
+        { name: "MDN", url: "https://developer.mozilla.org" },
+        { name: "Figma", url: "https://www.figma.com" },
+        { name: "Unsplash", url: "https://unsplash.com" },
+        { name: "B站", url: "https://www.bilibili.com" },
+        { name: "freeCodeCamp", url: "https://www.freecodecamp.org" }
+    ];
 
-            // ---------- 开发资源 ----------
-            { name: "Stack Overflow", category: "开发", desc: "程序员问答社区，解决技术问题。", url: "https://stackoverflow.com", icon: "fab fa-stack-overflow" },
-            { name: "MDN Web Docs", category: "开发", desc: "权威前端文档，HTML/CSS/JS。", url: "https://developer.mozilla.org", icon: "fab fa-firefox" },
-            { name: "Codesandbox", category: "开发", desc: "在线代码编辑器，快速原型。", url: "https://codesandbox.io", icon: "fas fa-code" },
-            { name: "Vercel", category: "开发", desc: "前端托管与Serverless平台。", url: "https://vercel.com", icon: "fas fa-chart-line" },
+    // 合并：常用在前，其余在后（不需要分类筛选的话，可以全部展示；但保留分类让用户可按类别过滤）
+    // 为了方便分类，给每个网站加上 category 字段（常用网站统一归为“常用”，其余按内容归类）
+    const allSites = [
+        ...pinnedSites.map(s => ({ ...s, category: "常用" })),
+        ...otherSites.map(s => ({ ...s, category: s.category || "其他" }))
+    ];
+    // 手动为 some sites 补充分类（简洁处理：大多数归为“其他”，也可以不分类直接展示）
+    // 为了分类功能不混乱，给上面 otherSites 里面的一些站点加上具体分类
+    const categoryMap = {
+        "GitHub": "开发", "YouTube": "视频", "Netlify": "部署", "ChatGPT": "AI", "Claude": "AI",
+        "Midjourney": "AI", "Hugging Face": "AI", "Stack Overflow": "开发", "MDN": "开发",
+        "Figma": "设计", "Unsplash": "设计", "B站": "视频", "freeCodeCamp": "学习"
+    };
+    allSites.forEach(site => {
+        if (site.category === "其他" && categoryMap[site.name]) {
+            site.category = categoryMap[site.name];
+        }
+    });
 
-            // ---------- 设计素材 ----------
-            { name: "Figma", category: "设计", desc: "UI设计工具，在线协作。", url: "https://www.figma.com", icon: "fab fa-figma" },
-            { name: "Unsplash", category: "设计", desc: "免费高质量图片素材。", url: "https://unsplash.com", icon: "fas fa-camera" },
-            { name: "Iconify", category: "设计", desc: "海量开源图标库。", url: "https://iconify.design", icon: "fas fa-icons" },
-            { name: "Coolors", category: "设计", desc: "配色方案生成器。", url: "https://coolors.co", icon: "fas fa-palette" },
+    // 获取所有分类（去重，并把"常用"放在最前）
+    let categoriesSet = new Set(allSites.map(s => s.category));
+    let categories = Array.from(categoriesSet);
+    categories.sort((a,b) => (a === "常用" ? -1 : (b === "常用" ? 1 : 0)));
 
-            // ---------- 学习平台 ----------
-            { name: "Coursera", category: "学习", desc: "名校课程，计算机、AI等。", url: "https://www.coursera.org", icon: "fas fa-graduation-cap" },
-            { name: "B站", category: "学习", desc: "中文视频学习社区。", url: "https://www.bilibili.com", icon: "fab fa-bilibili" },
-            { name: "freeCodeCamp", category: "学习", desc: "免费编程教程和项目。", url: "https://www.freecodecamp.org", icon: "fas fa-laptop-code" }
-        ];
+    let currentCategory = "all";
+    let currentSearch = "";
 
-        // 动态生成分类按钮列表（根据数据中的category去重，并把“常用”放在最前面）
-        let categories = [...new Set(linksData.map(item => item.category))];
-        // 确保“常用”在第一个
-        categories = categories.filter(c => c !== "常用");
-        categories.unshift("常用");
-        // 生成按钮HTML
-        const categoriesContainer = document.getElementById('categories');
-        categoriesContainer.innerHTML = '<button class="category-btn active" data-category="all">全部</button>' +
-            categories.map(cat => `<button class="category-btn" data-category="${cat}">${cat}</button>`).join('');
-
-        let currentCategory = "all";
-        let currentSearchTerm = "";
-
-        function renderLinks() {
-            let filtered = linksData;
-            if (currentCategory !== "all") {
-                filtered = filtered.filter(item => item.category === currentCategory);
-            }
-            if (currentSearchTerm) {
-                const term = currentSearchTerm.toLowerCase();
-                filtered = filtered.filter(item =>
-                    item.name.toLowerCase().includes(term) ||
-                    item.desc.toLowerCase().includes(term)
-                );
-            }
-
-            const grid = document.getElementById('linksGrid');
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div style="text-align:center; padding:60px; grid-column:1/-1;">🔍 没有找到相关网站，试试其他关键词吧~</div>';
-                document.getElementById('totalCount').innerText = filtered.length;
-                return;
-            }
-
-            grid.innerHTML = filtered.map(item => `
-                <div class="link-card">
-                    <div class="card-icon"><i class="${item.icon || 'fas fa-link'}"></i></div>
-                    <div class="link-title"><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.name}</a></div>
-                    <div class="link-desc">${item.desc}</div>
-                    <div class="link-footer">
-                        <a href="${item.url}" class="visit-btn" target="_blank" rel="noopener noreferrer">访问网站 →</a>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('totalCount').innerText = filtered.length;
+    function renderGrid() {
+        let filtered = allSites;
+        if (currentCategory !== "all") {
+            filtered = filtered.filter(site => site.category === currentCategory);
+        }
+        if (currentSearch.trim() !== "") {
+            const kw = currentSearch.trim().toLowerCase();
+            filtered = filtered.filter(site => site.name.toLowerCase().includes(kw));
         }
 
-        // 分类切换事件
+        const grid = document.getElementById('sitesGrid');
+        if (filtered.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px;">⚡ 没有找到相关网站</div>';
+            return;
+        }
+        grid.innerHTML = filtered.map(site => `
+            <div class="site-card">
+                <a href="${site.url}" target="_blank" rel="noopener noreferrer">${site.name}</a>
+            </div>
+        `).join('');
+    }
+
+    // 生成分类按钮
+    function renderCategories() {
+        const bar = document.getElementById('categoryBar');
+        bar.innerHTML = `<button class="category-btn active" data-cat="all">全部</button>` +
+            categories.map(cat => `<button class="category-btn" data-cat="${cat}">${cat}</button>`).join('');
+        // 绑定事件
         document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
                 document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                currentCategory = this.getAttribute('data-category');
-                renderLinks();
+                currentCategory = this.getAttribute('data-cat');
+                renderGrid();
             });
         });
+    }
 
-        // 搜索事件
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            currentSearchTerm = e.target.value;
-            renderLinks();
-        });
+    // 搜索
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentSearch = e.target.value;
+        renderGrid();
+    });
 
-        // 初始化渲染
-        renderLinks();
-    </script>
+    renderCategories();
+    renderGrid();
+</script>
 </body>
 </html>
