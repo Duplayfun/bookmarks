@@ -145,7 +145,8 @@
         { name: "企业邮箱", url: "https://v6.35.com/v2/login/index" },
         { name: "1688", url: "https://www.1688.com/" },
         { name: "WeTransfer", url: "https://wetransfer.com/" },
-        { name: "顺丰快递", url: "https://www.sf-express.com/chn/sc" }
+        { name: "顺丰快递", url: "https://www.sf-express.com/chn/sc" },
+        { name: "Youtube", url: "https://www.youtube.com" }
     ];
 
     // 其余网站（按需增删，这里沿用之前的部分站点）
@@ -176,7 +177,7 @@
     const categoryMap = {
         "GitHub": "开发", "DNSHE": "开发", "Netlify": "部署", "ChatGPT": "AI", "Claude": "AI",
         "Midjourney": "AI", "Hugging Face": "AI", "Stack Overflow": "开发", "MDN": "开发",
-        "Figma": "设计", "Unsplash": "设计", "B站": "视频", "freeCodeCamp": "学习","Cloudflare": "开发"
+        "Figma": "设计", "Unsplash": "设计", "B站": "视频","Youtube": "视频", "freeCodeCamp": "学习","Cloudflare": "开发"
     };
     allSites.forEach(site => {
         if (site.category === "其他" && categoryMap[site.name]) {
