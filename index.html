@@ -163,7 +163,8 @@
         { name: "Figma", url: "https://www.figma.com" },
         { name: "Unsplash", url: "https://unsplash.com" },
         { name: "B站", url: "https://www.bilibili.com" },
-        { name: "freeCodeCamp", url: "https://www.freecodecamp.org" }
+        { name: "freeCodeCamp", url: "https://www.freecodecamp.org" },
+        { name: "ChatPDF", url: "https://www.chatpdf.com" }
     ];
 
     // 合并：常用在前，其余在后（不需要分类筛选的话，可以全部展示；但保留分类让用户可按类别过滤）
@@ -177,7 +178,8 @@
     const categoryMap = {
         "GitHub": "开发", "DNSHE": "开发", "Netlify": "部署", "ChatGPT": "AI", "Claude": "AI",
         "Midjourney": "AI", "Hugging Face": "AI", "Stack Overflow": "开发", "MDN": "开发",
-        "Figma": "设计", "Unsplash": "设计", "B站": "视频","Youtube": "视频", "freeCodeCamp": "学习","Cloudflare": "开发"
+        "Figma": "设计", "Unsplash": "设计", "B站": "视频","Youtube": "视频", "freeCodeCamp": "学习",
+        "Cloudflare": "开发", "ChatPDF": "AI"
     };
     allSites.forEach(site => {
         if (site.category === "其他" && categoryMap[site.name]) {
